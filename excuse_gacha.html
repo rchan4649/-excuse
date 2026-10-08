@@ -16,9 +16,6 @@
             <h1 class="text-xl font-extrabold bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent flex items-center gap-2">
                 🎰 言い訳ガチャ <span class="text-xs bg-purple-900/60 text-purple-300 border border-purple-700/50 px-2 py-0.5 rounded-full">無限他責メーカー</span>
             </h1>
-            <a href="index.html" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold px-3 py-1.5 rounded-lg transition border border-slate-700">
-                🙇‍♂️ お詫びメーカーに戻る
-            </a>
         </div>
     </header>
 
@@ -112,7 +109,6 @@
     </footer>
 
     <script>
-        // ジャンル別の言い訳データ（各5パターン以上）
         const excuseData = {
             space: {
                 name: "🌌 宇宙・物理法則レベル",
@@ -164,17 +160,14 @@
             const selectedCategory = excuseData[genre];
             const randomIndex = Math.floor(Math.random() * selectedCategory.excuses.length);
             
-            // プレースホルダーを置き換え
             let excuseText = selectedCategory.excuses[randomIndex];
             excuseText = excuseText.replace(/\{trouble\}/g, trouble);
 
-            // 表示の更新
             document.getElementById('genreBadge').textContent = selectedCategory.name;
             document.getElementById('outputText').textContent = excuseText;
             document.getElementById('resultArea').classList.remove('hidden');
             document.getElementById('resultArea').scrollIntoView({ behavior: 'smooth' });
 
-            // Xシェアリンクの設定
             const shareText = encodeURIComponent(`【言い訳ガチャ】\n"${trouble}"\n↓\n${excuseText}\n\n#言い訳ガチャ #無限他責メーカー`);
             document.getElementById('shareXBtn').href = `https://twitter.com/intent/tweet?text=${shareText}`;
         }
